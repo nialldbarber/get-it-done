@@ -17,7 +17,6 @@
     "@types/mongodb": "^3.5.25",
     "@types/webpack-env": "^1.15.2",
     "babel-eslint": "^9.0.0",
-    "babel-plugin-root-import": "^6.5.0",
     "dotenv": "^8.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
@@ -42,7 +41,6 @@
     "cors": "^2.8.5",
     "graphql": "^15.3.0",
     "graphql-import": "^1.0.2",
-    "graphql-scalars": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.25"
