@@ -40,6 +40,7 @@ const userResolver = {
 
       // But if they do exist, give em a nice lil token 🏅
       const token = generateUserToken(user);
+      console.log(token);
 
       return {
         ...user._doc,

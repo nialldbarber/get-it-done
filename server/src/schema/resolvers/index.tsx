@@ -1,11 +1,14 @@
-import { userResolver } from './user-resolver';
+import { userResolver } from './user';
+import { todoResolver } from './todo';
 
 const resolvers = {
   Query: {
     ...userResolver.Query,
+    ...todoResolver.Query,
   },
   Mutation: {
     ...userResolver.Mutation,
+    ...todoResolver.Mutation,
   },
 };
 
