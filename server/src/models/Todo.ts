@@ -16,7 +16,7 @@ const Todos = {
   author: { type: String },
 };
 
-const todoSchema: Schema = new Schema({ Todos });
+const todoSchema: Schema = new Schema(Todos);
 
 const Todo = model<ITodo>('Todo', todoSchema);
 

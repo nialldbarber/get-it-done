@@ -29,6 +29,7 @@ const typeDefs = gql`
 
   input AddTodoInput {
     content: String!
+    deadline: String!
   }
 
   input RegisterInput {

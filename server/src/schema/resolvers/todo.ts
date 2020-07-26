@@ -1,7 +1,7 @@
 import { UserInputError } from 'apollo-server-express';
-import { Todos } from '../../models/Todo';
+import { Todo } from '../../models/Todo';
 import { checkValidAuth } from '../../utils/auth/user';
-import { validateInput } from '../../utils/validation';
+import { validateTodoInput } from '../../utils/validation/todo';
 
 const todoResolver = {
   // Queries
@@ -10,20 +10,24 @@ const todoResolver = {
 
   // Mutations
   Mutation: {
-    addTodo: async (_: any, { input: { content } }, context) => {
+    addTodo: async (_: any, { input: { content, deadline } }, context) => {
       // Check if user has token, so they can create a todo
       const user = checkValidAuth(context);
-
-      const { valid, errors } = validateInput({
-        [content]: 'Please add an item!',
+      // Validate the registration attempt
+      const { valid, errors } = validateTodoInput(content);
+      if (!valid) {
+        throw new UserInputError('Errors', { errors });
+      }
+      // Create todo
+      const newTodo = new Todo({
+        id: user.id,
+        content,
+        createdAt: new Date().toISOString(),
+        deadline,
+        author: user.username,
       });
 
-      if (!valid) {
-        console.log('It is NOT valid');
-        throw new UserInputError('Errors', { errors });
-      } else {
-        console.log('It is valid');
-      }
+      console.log(newTodo);
     },
 
     // delete a todo
