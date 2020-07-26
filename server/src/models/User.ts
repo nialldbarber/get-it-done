@@ -2,6 +2,7 @@ import { model, Schema, Document } from 'mongoose';
 import { Todos, ITodo } from './Todo';
 
 interface IUser extends Document {
+  _doc: any;
   id: string;
   username: string;
   email: string;

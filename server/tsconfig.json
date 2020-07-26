@@ -6,10 +6,10 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "baseUrl": "./src",
     "jsx": "react",
+    "baseUrl": "src",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["*"]
     }
   },
   "include": ["./src/**/*", "src/**/*.ts", "./types.d.ts"],
