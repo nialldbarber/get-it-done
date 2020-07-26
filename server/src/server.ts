@@ -1,10 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const { ApolloServer } = require('apollo-server-express');
-const { resolvers } = require('./schema/resolvers');
-const { typeDefs } = require('./schema/type-defs');
-const { runDb } = require('./db');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
+import { resolvers } from './schema/resolvers';
+import { typeDefs } from './schema/type-defs';
+import { runDb } from './db';
 
 (function startServer() {
   runDb();
