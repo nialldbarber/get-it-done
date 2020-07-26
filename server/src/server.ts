@@ -6,7 +6,7 @@ import { resolvers } from './schema/resolvers';
 import { typeDefs } from './schema/type-defs';
 import { runDb } from './db';
 
-(function startServer() {
+(function startServer(): void {
   runDb();
   const app = express();
   const port = process.env.PORT || 4000;
