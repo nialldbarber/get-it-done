@@ -1,7 +1,7 @@
 import { UserInputError } from 'apollo-server-express';
 import { Todos } from '../../models/Todo';
 import { checkValidAuth } from '../../utils/auth/user';
-import { validateTodoInput } from '../../utils/validation/todo';
+import { validateInput } from '../../utils/validation';
 
 const todoResolver = {
   // Queries
@@ -13,11 +13,16 @@ const todoResolver = {
     addTodo: async (_: any, { input: { content } }, context) => {
       // Check if user has token, so they can create a todo
       const user = checkValidAuth(context);
-      const { valid, errors } = validateTodoInput(content);
+
+      const { valid, errors } = validateInput({
+        [content]: 'Please add an item!',
+      });
 
       if (!valid) {
-        console.log('NOPE!');
+        console.log('It is NOT valid');
         throw new UserInputError('Errors', { errors });
+      } else {
+        console.log('It is valid');
       }
     },
 
