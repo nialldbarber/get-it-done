@@ -1,17 +1,15 @@
-const { gql } = require('apollo-server');
+import { gql } from 'apollo-server';
 
 const typeDefs = gql`
   type Query {
-    getTodo(id: ID!): Todo
-    getAllTodos: [Todo]
-    greeting: String
+    getAllTodos(id: ID!): [Todo]
   }
 
   type Mutation {
     addTodo(input: AddTodoInput!): Todo!
     removeTodo(_id: ID!): String!
     registerUser(registerInput: RegisterInput): User
-    userLogin(username: String!, password: String!): User!
+    userLogin(email: String!, password: String!): User
   }
 
   type User {

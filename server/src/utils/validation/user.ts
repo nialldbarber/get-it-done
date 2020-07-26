@@ -38,4 +38,21 @@ function validateRegisterInput(
   };
 }
 
-export { validateRegisterInput };
+function validateLoginInput(email: string, password: string) {
+  const errors = <IError>{};
+
+  if (email.trim() === '') {
+    errors.email = 'Email must not be empty';
+  }
+
+  if (password.trim() === '') {
+    errors.password = 'Password must not be empty';
+  }
+
+  return {
+    errors,
+    valid: Object.keys(errors).length < 1,
+  };
+}
+
+export { validateRegisterInput, validateLoginInput };
