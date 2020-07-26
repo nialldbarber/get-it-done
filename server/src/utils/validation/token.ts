@@ -1,6 +1,7 @@
 import { sign } from 'jsonwebtoken';
+import { IUser } from '../../models/User';
 
-function generateUserToken(user) {
+function generateUserToken(user: IUser) {
   return sign(
     {
       id: user.id,
