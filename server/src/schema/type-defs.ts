@@ -1,11 +1,23 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
-  scalar DateTime
+  type Query {
+    getTodo(id: ID!): Todo
+    getAllTodos: [Todo]
+    greeting: String
+  }
+
+  type Mutation {
+    addTodo(input: AddTodoInput!): Todo!
+    removeTodo(_id: ID!): String!
+    registerUser(registerInput: RegisterInput): User
+    userLogin(username: String!, password: String!): User!
+  }
 
   type User {
-    id: ID!
-    name: String!
+    id: ID
+    username: String
+    email: String
     todos: [Todo]
   }
 
@@ -17,17 +29,15 @@ const typeDefs = gql`
     author: User!
   }
 
-  type Query {
-    getTodo(id: ID!): Todo
-    getAllTodos(id: ID!): [Todo]
-  }
-
-  input PublishTodoInput {
+  input AddTodoInput {
     content: String!
   }
 
-  type Mutation {
-    publishTodo(input: PublishTodoInput!): Todo!
+  input RegisterInput {
+    username: String!
+    email: String!
+    password: String!
+    confirmPassword: String!
   }
 `;
 

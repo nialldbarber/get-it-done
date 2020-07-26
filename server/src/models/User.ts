@@ -3,16 +3,20 @@ import { Todos, ITodo } from './Todo';
 
 interface IUser extends Document {
   id: string;
-  name: string;
+  username: string;
+  email: string;
+  password: string;
   todos: ITodo[];
 }
 
-const UserSchema: Schema = new Schema({
+const userSchema: Schema = new Schema({
   id: { type: String },
-  name: { type: String },
+  username: { type: String },
+  email: { type: String },
+  password: { type: String },
   todos: [Todos],
 });
 
-const User = model<IUser>('User', UserSchema);
+const User = model<IUser>('User', userSchema);
 
 export { User };

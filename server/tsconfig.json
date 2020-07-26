@@ -3,11 +3,13 @@
     "sourceMap": true,
     "target": "es6",
     "module": "commonjs",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "baseUrl": "src",
+    "baseUrl": "./src",
+    "jsx": "react",
     "paths": {
-      "~/*": ["*"]
+      "~/*": ["src/*"]
     }
   },
   "include": ["./src/**/*", "src/**/*.ts", "./types.d.ts"],
