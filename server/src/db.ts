@@ -2,7 +2,7 @@ import { connection, connect } from 'mongoose';
 
 require('dotenv').config({ path: '.env' });
 
-function runDb() {
+function runDb(): void {
   connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
