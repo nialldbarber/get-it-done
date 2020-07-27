@@ -1,7 +1,7 @@
 import { model, Schema, Document } from 'mongoose';
-import { Todos, ITodo, ObjectId } from './Todo';
+import { Todos, ITodo } from './Todo';
 
-export interface IUser extends Document {
+interface IUser extends Document {
   _doc: any;
   id: string;
   username: string;
@@ -11,7 +11,7 @@ export interface IUser extends Document {
 }
 
 const userSchema: Schema = new Schema({
-  id: { type: ObjectId, ref: 'Todo' },
+  id: { type: String },
   username: { type: String },
   email: { type: String },
   password: { type: String },
@@ -20,4 +20,4 @@ const userSchema: Schema = new Schema({
 
 const User = model<IUser>('User', userSchema);
 
-export { User };
+export { User, IUser };

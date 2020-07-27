@@ -6,7 +6,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addTodo(input: AddTodoInput): Todo
+    addTodo(content: String!, deadline: String!): Todo
     removeTodo(_id: ID!): String
     registerUser(registerInput: RegisterInput): User
     userLogin(email: String!, password: String!): User
@@ -20,16 +20,11 @@ const typeDefs = gql`
   }
 
   type Todo {
-    id: ID!
     content: String!
     createdAt: String!
     deadline: String!
-    author: User!
-  }
-
-  input AddTodoInput {
-    content: String!
-    deadline: String!
+    username: String!
+    email: String!
   }
 
   input RegisterInput {

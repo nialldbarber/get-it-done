@@ -1,9 +1,6 @@
-import { model, Schema, Document, Types } from 'mongoose';
-
-export const ObjectId = Types.ObjectId;
+import { model, Schema, Document } from 'mongoose';
 
 interface ITodo extends Document {
-  id: string;
   content: string;
   createdAt: string;
   deadline: string;
@@ -11,11 +8,15 @@ interface ITodo extends Document {
 }
 
 const Todos = {
-  id: { type: String },
   content: { type: String },
   createdAt: { type: String },
   deadline: { type: String },
-  author: [ObjectId],
+  username: { type: String },
+  email: { type: String },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
 };
 
 const todoSchema: Schema = new Schema(Todos);
