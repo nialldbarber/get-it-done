@@ -10,7 +10,11 @@ const todoResolver = {
 
   // Mutations
   Mutation: {
-    addTodo: async (_: any, { input: { content, deadline } }, context) => {
+    addTodo: async (
+      _: any,
+      { input: { content, deadline, author } },
+      context
+    ) => {
       // Check if user has token, so they can create a todo
       const user = checkValidAuth(context);
       // Validate the registration attempt
@@ -20,11 +24,11 @@ const todoResolver = {
       }
       // Create todo
       const newTodo = new Todo({
-        id: user.id,
+        _id: user._id,
         content,
         createdAt: new Date().toISOString(),
         deadline,
-        author: user.username,
+        author,
       });
 
       console.log(newTodo);

@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { Todos, ITodo } from './Todo';
+import { Todos, ITodo, ObjectId } from './Todo';
 
 export interface IUser extends Document {
   _doc: any;
@@ -11,7 +11,7 @@ export interface IUser extends Document {
 }
 
 const userSchema: Schema = new Schema({
-  id: { type: String },
+  id: { type: ObjectId, ref: 'Todo' },
   username: { type: String },
   email: { type: String },
   password: { type: String },

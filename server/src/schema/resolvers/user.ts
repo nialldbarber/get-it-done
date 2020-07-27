@@ -89,6 +89,9 @@ const userResolver = {
       const registeredUser = await newUser.save();
       const token = generateUserToken(registeredUser);
 
+      console.log(newUser);
+      console.log(token);
+
       return {
         ...registeredUser._doc,
         id: registeredUser._id,
